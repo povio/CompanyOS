@@ -200,7 +200,7 @@ export function supervisorNeedsStart(status: AppdStatus | null): boolean {
  *      start would queue, at most `KEEP_ALIVE_REFRESHES_PER_PASS` per pass.
  *   3. Keep running: the provider is asked about every always-on runtime the
  *      database records as running. Running: compute liveness is stamped, so
- *      billing continues without inbound traffic, and on Daytona the
+ *      billing continues without inbound traffic, and on Daytona and E2B the
  *      provider's idle timer is renewed. Not running: the row is corrected and
  *      the App is started through the wake gate (entitlement, concurrency),
  *      like an App whose row already said stopped.

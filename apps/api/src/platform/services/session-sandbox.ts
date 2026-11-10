@@ -1017,8 +1017,8 @@ async function createAttemptSandbox(
   const createFn = bootDecision.bootByTemplateId
     ? (o: CreateSandboxOpts) => provider.createFromExternalId!(bootDecision.bootByTemplateId!, o)
     : undefined;
-  // No provider edge is armed at create: one mechanism serves platinum
-  // and daytona alike. The guest holds a handle; the broker route substitutes server-side.
+  // No provider edge is armed at create: one mechanism serves daytona, e2b
+  // and platinum alike. The guest holds a handle; the broker route substitutes server-side.
   let result: ProvisionResult;
   let attempts: number;
   try {
@@ -1544,7 +1544,7 @@ async function failSessionSandboxProvisioning(
   const { accountId } = opts;
   const { providerName, provider, bgExternalId } = state;
   // Keep provider SDK text in diagnostic metadata. Show one stable contract
-  // for Platinum, Daytona, and future providers.
+  // for E2B, Daytona, Platinum, and future providers.
   // A project with drives runs on Platinum only: when Platinum cannot be
   // reached at all, say that, instead of a generic provider failure.
   const platinumUnreachable =

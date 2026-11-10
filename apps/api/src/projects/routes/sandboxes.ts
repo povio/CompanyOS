@@ -125,7 +125,7 @@ interface SandboxHealthPayload {
    */
   status: ReturnType<typeof serializeSandboxStatus> | null;
   provider_mode: 'automatic' | 'pinned';
-  selected_provider: 'platinum' | 'daytona' | null;
+  selected_provider: 'daytona' | 'platinum' | 'e2b' | null;
 }
 
 // Safe degraded payload: same shape as the happy path, surfaced when any
@@ -192,7 +192,7 @@ async function buildSandboxHealth(
  * How long one project's sandbox-health answer is reused.
  *
  * `buildSandboxHealth` is not a database read: `listSandboxTemplates` calls
- * `provider.getSnapshotState()` — a LIVE round trip to Platinum / Daytona
+ * `provider.getSnapshotState()` — a LIVE round trip to Daytona / E2B / Platinum
  * — once per template, plus a git read to hash the template directory. On the
  * SampleCo corpus (2026-08-26) that made this "cheap polling endpoint" the
  * slowest non-proxy read on the box: 559 ms mean server-side over 169 calls,
